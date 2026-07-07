@@ -1,1 +1,59 @@
+cff-version: 0.0.1
+message: >
+  If you use CircuitBench in your research, please cite this software using the
+  metadata provided below.
 
+title: CircuitBench
+abstract: >
+  CircuitBench is an open-source benchmark for AI-assisted electrical circuit
+  design, simulation, optimization, and surrogate modeling. The framework
+  provides standardized circuit datasets, reproducible SPICE simulation
+  pipelines, benchmark tasks, and evaluation metrics for comparing machine
+  learning algorithms in electrical engineering.
+
+type: software
+
+authors:
+  - family-names: Kazi
+    given-names: Asif
+    affiliation: BRAC University
+    email: kazisaadasif29@gmail.com
+    orcid: https://orcid.org/0000-0003-0560-9117
+
+repository-code: https://github.com/ksaad20/CircuitBench
+
+url: https://github.com/ksaad20/CircuitBench
+
+license: Apache 2.0
+
+keywords:
+  - Electrical Engineering
+  - Circuit Design
+  - Benchmark
+  - Machine Learning
+  - Artificial Intelligence
+  - SPICE
+  - ngspice
+  - PySpice
+  - Analog Circuits
+  - Digital Circuits
+  - Power Electronics
+  - Explainable AI
+  - Surrogate Modeling
+  - Optimization
+
+version: 0.0.1
+
+date-released: 2026-07-07
+
+preferred-citation:
+  type: software
+  authors:
+    - family-names: Kazi
+      given-names: Asif
+      orcid: https://orcid.org/0000-0003-0560-9117
+  title: CircuitBench
+  version: 0.0.1
+  year: 2026
+  repository-code: https://github.com/ksaad20/CircuitBench
+  license: Apache 2.0
