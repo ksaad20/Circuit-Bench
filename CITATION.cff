@@ -14,7 +14,7 @@ abstract: >
 type: software
 
 authors:
-  - family-names: Kazi
+    family-names: Kazi
     given-names: Asif
     affiliation: BRAC University
     email: kazisaadasif29@gmail.com
