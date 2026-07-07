@@ -1,1 +1,19 @@
+name: RC Cutoff Frequency Benchmark
 
+dataset: RC_Filter_v1
+
+task: regression
+
+inputs:
+  - resistance
+  - capacitance
+
+target:
+  - cutoff_frequency
+
+metrics:
+  - RMSE
+  - MAE
+  - R2
+
+leaderboard_metric: RMSE
