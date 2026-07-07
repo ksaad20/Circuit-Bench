@@ -36,50 +36,50 @@ Potential modules
 
 1. CircuitBench-Core
 
-Passive circuits
-RLC networks
-Resonance
-Filters
+i. Passive circuits
+ii. RLC networks
+iii. Resonance
+iv. Filters
 
 2. CircuitBench-Analog
 
-Operational amplifiers
-Oscillators
-Instrumentation amplifiers
-Active filters
+i. Operational amplifiers
+ii. Oscillators
+iii. Instrumentation amplifiers
+iv. Active filters
 
 3. CircuitBench-Digital
 
-CMOS logic
-Timing analysis
-Noise margin
-Propagation delay
+i. CMOS logic
+ii. Timing analysis
+iii. Noise margin
+iv. Propagation delay
 
 4. CircuitBench-Power
 
-DC–DC converters
-Inverters
-Battery management circuits
-Motor drives
+i. DC–DC converters
+ii. Inverters
+iii. Battery management circuits
+iv. Motor drives
 
 5. CircuitBench-RF
 
-Matching networks
-Amplifiers
-Transmission lines
-Antennas
+i. Matching networks
+ii. Amplifiers
+iii. Transmission lines
+iv. Antennas
 
 6. CircuitBench-Fault
 
-Open circuits
-Short circuits
-Component degradation
-Sensor failures
+i. Open circuits
+ii. Short circuits
+iii. Component degradation
+iv. Sensor failures
 
 7. CircuitBench-XAI
 
-SHAP
-LIME
-Feature importance
-Uncertainty estimation
+i. SHAP
+ii. LIME
+iii. Feature importance
+iv. Uncertainty estimation
 
