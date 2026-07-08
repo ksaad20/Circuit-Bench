@@ -1,0 +1,5 @@
+CPU
+
+CUDA
+
+Apple MPS
