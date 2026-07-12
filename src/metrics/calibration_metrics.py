@@ -50,7 +50,8 @@ class CalibrationMetrics:
 
                 confidence = np.mean(y_prob[mask])
 
-                ece += (np.sum(mask) / len(y_true)) * abs(accuracy - confidence)
+                ece += (np.sum(mask) / len(y_true)) * \
+                    abs(accuracy - confidence)
 
         return float(ece)
 

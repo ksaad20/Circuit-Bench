@@ -20,9 +20,11 @@ class Logger:
         self.logger.setLevel(level)
 
         if not self.logger.handlers:
-            formatter = logging.Formatter("%(asctime)s | %(levelname)s | %(message)s")
+            formatter = logging.Formatter(
+                "%(asctime)s | %(levelname)s | %(message)s")
 
-            file_handler = logging.FileHandler(Path(log_directory) / "circuitbench.log")
+            file_handler = logging.FileHandler(
+                Path(log_directory) / "circuitbench.log")
             file_handler.setFormatter(formatter)
 
             console_handler = logging.StreamHandler()
