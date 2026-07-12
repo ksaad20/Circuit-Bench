@@ -3,10 +3,12 @@ import nbformat as nbf
 nb = nbf.v4.new_notebook()
 
 cells = [
-
-("# Hyperparameter Optimization\n\nCircuitBench optimization benchmark.", "markdown"),
-
-("""
+    (
+        "# Hyperparameter Optimization\n\nCircuitBench optimization benchmark.",
+        "markdown",
+    ),
+    (
+        """
 import json
 from pathlib import Path
 
@@ -23,9 +25,11 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_squared_error, r2_score
 
 SEED = 42
-""", "code"),
-
-("""
+""",
+        "code",
+    ),
+    (
+        """
 df = pd.DataFrame({
     "Voltage":[3.65,3.72,3.81,3.95,4.05],
     "Current":[2.1,1.8,1.5,1.1,0.8],
@@ -42,9 +46,11 @@ X_train,X_test,y_train,y_test = train_test_split(
     test_size=0.2,
     random_state=SEED
 )
-""", "code"),
-
-("""
+""",
+        "code",
+    ),
+    (
+        """
 model = RandomForestRegressor(
     random_state=SEED
 )
@@ -54,9 +60,11 @@ params = {
     "max_depth":[None,5,10],
     "min_samples_split":[2,5]
 }
-""", "code"),
-
-("""
+""",
+        "code",
+    ),
+    (
+        """
 grid = GridSearchCV(
     model,
     params,
@@ -83,9 +91,11 @@ r2 = r2_score(
 print(grid.best_params_)
 print(rmse)
 print(r2)
-""", "code"),
-
-("""
+""",
+        "code",
+    ),
+    (
+        """
 results = {
     "best_parameters": grid.best_params_,
     "RMSE": float(rmse),
@@ -105,33 +115,22 @@ with open(
     )
 
 print("Optimization completed")
-""", "code"),
-
+""",
+        "code",
+    ),
 ]
 
 for source, cell_type in cells:
     if cell_type == "markdown":
-        nb.cells.append(
-            nbf.v4.new_markdown_cell(source)
-        )
+        nb.cells.append(nbf.v4.new_markdown_cell(source))
     else:
-        nb.cells.append(
-            nbf.v4.new_code_cell(source)
-        )
+        nb.cells.append(nbf.v4.new_code_cell(source))
 
 nb.metadata = {
-    "kernelspec":{
-        "display_name":"Python 3",
-        "language":"python",
-        "name":"python3"
-    }
+    "kernelspec": {"display_name": "Python 3", "language": "python", "name": "python3"}
 }
 
-with open(
-    "notebooks/7_Hyperparameter_Optimization.ipynb",
-    "w",
-    encoding="utf-8"
-) as f:
-    nbf.write(nb,f)
+with open("notebooks/7_Hyperparameter_Optimization.ipynb", "w", encoding="utf-8") as f:
+    nbf.write(nb, f)
 
 print("Created valid notebook")
