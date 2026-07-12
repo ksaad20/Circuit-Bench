@@ -392,11 +392,6 @@ class ClassificationMetrics:
 
         return report
 
-
-__all__ = [
-    "ClassificationMetrics",
-]
-
 from sklearn.metrics import (
     classification_report,
     multilabel_confusion_matrix,
@@ -493,4 +488,8 @@ from sklearn.metrics import (
             y_pred,
             average="macro",
         )
+
+__all__ = [
+    "ClassificationMetrics",
+]
 
