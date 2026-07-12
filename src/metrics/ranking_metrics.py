@@ -148,3 +148,144 @@ class RankingMetrics:
 __all__ = [
     "RankingMetrics",
 ]
+
+    @staticmethod
+    def average_precision(
+        y_true,
+        y_pred,
+    ):
+        """
+        Average Precision (AP)
+        """
+
+        y_true = set(y_true)
+
+        if len(y_true) == 0:
+            return 0.0
+
+        score = 0.0
+        hits = 0
+
+        for i, item in enumerate(y_pred, start=1):
+
+            if item in y_true:
+
+                hits += 1
+
+                score += hits / i
+
+        return float(score / len(y_true))
+
+    @staticmethod
+    def mean_average_precision(
+        truth_lists,
+        prediction_lists,
+    ):
+        """
+        Mean Average Precision (MAP)
+        """
+
+        scores = [
+
+            RankingMetrics.average_precision(
+                truth,
+                pred,
+            )
+
+            for truth, pred in zip(
+                truth_lists,
+                prediction_lists,
+            )
+
+        ]
+
+        return float(np.mean(scores))
+
+    @staticmethod
+    def dcg(
+        relevance,
+    ):
+        """
+        Discounted Cumulative Gain.
+        """
+
+        relevance = np.asarray(
+            relevance,
+            dtype=float,
+        )
+
+        if relevance.size == 0:
+            return 0.0
+
+        discounts = np.log2(
+            np.arange(
+                2,
+                relevance.size + 2,
+            )
+        )
+
+        return float(
+            np.sum(
+                relevance / discounts
+            )
+        )
+
+    @staticmethod
+    def ndcg(
+        relevance,
+    ):
+        """
+        Normalized Discounted Cumulative Gain.
+        """
+
+        relevance = np.asarray(
+            relevance,
+            dtype=float,
+        )
+
+        ideal = np.sort(
+            relevance
+        )[::-1]
+
+        ideal_dcg = RankingMetrics.dcg(
+            ideal,
+        )
+
+        if ideal_dcg == 0:
+            return 0.0
+
+        return float(
+            RankingMetrics.dcg(
+                relevance,
+            )
+            /
+            ideal_dcg
+        )
+
+    @staticmethod
+    def mean_reciprocal_rank(
+        truth_lists,
+        prediction_lists,
+    ):
+        """
+        Mean Reciprocal Rank (MRR)
+        """
+
+        scores = [
+
+            RankingMetrics.reciprocal_rank(
+                truth,
+                pred,
+            )
+
+            for truth, pred in zip(
+                truth_lists,
+                prediction_lists,
+            )
+
+        ]
+
+        return float(
+            np.mean(scores)
+        )
+
