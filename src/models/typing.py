@@ -12,19 +12,14 @@ import time
 from pathlib import Path
 from typing import Any, Dict
 import numpy as np
-from pathlib import Path
 from typing import (
-    Any,
     Callable,
-    Dict,
     List,
     MutableMapping,
     Sequence,
     Type,
     Union,
 )
-
-import numpy as np
 
 try:
     import pandas as pd
