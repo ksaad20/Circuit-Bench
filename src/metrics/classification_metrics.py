@@ -31,8 +31,9 @@ from sklearn.metrics import (
     roc_auc_score,
     roc_curve,
     top_k_accuracy_score,
+    classification_report,
+    multilabel_confusion_matrix
 )
-
 
 class ClassificationMetrics:
 
@@ -391,11 +392,7 @@ class ClassificationMetrics:
             )
 
         return report
-
-from sklearn.metrics import (
-    classification_report,
-    multilabel_confusion_matrix,
-)
+        
     @staticmethod
     def per_class_report(
         y_true,
