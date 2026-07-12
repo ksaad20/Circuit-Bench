@@ -329,3 +329,174 @@ def test_metadata():
 
     assert "runner" in metadata
 
+
+# ---------------------------------------------------------------------
+# Metric Evaluation
+# ---------------------------------------------------------------------
+
+def test_evaluate_metrics():
+
+    runner = BenchmarkRunner()
+
+    runner.add_metric(
+        "MAE",
+        lambda y, p: np.mean(np.abs(y - p)),
+    )
+
+    y_true = np.array([1.0, 2.0, 3.0])
+
+    y_pred = np.array([1.1, 2.1, 2.9])
+
+    metrics = runner._evaluate_metrics(
+        y_true,
+        y_pred,
+    )
+
+    assert "MAE" in metrics
+
+    assert metrics["MAE"] >= 0.0
+
+
+def test_metric_failure_returns_nan():
+
+    runner = BenchmarkRunner()
+
+    def bad_metric(y, p):
+        raise RuntimeError("Intentional failure")
+
+    runner.add_metric(
+        "Broken",
+        bad_metric,
+    )
+
+    metrics = runner._evaluate_metrics(
+        np.array([1]),
+        np.array([1]),
+    )
+
+    assert np.isnan(metrics["Broken"])
+
+
+# ---------------------------------------------------------------------
+# Model Fit / Predict
+# ---------------------------------------------------------------------
+
+def test_fit_model(model, dataset):
+
+    runner = BenchmarkRunner()
+
+    elapsed = runner._fit_model(
+        model,
+        dataset.X_train,
+        dataset.y_train,
+    )
+
+    assert elapsed >= 0
+
+
+def test_predict(model, dataset):
+
+    runner = BenchmarkRunner()
+
+    model.fit(
+        dataset.X_train,
+        dataset.y_train,
+    )
+
+    predictions, elapsed = runner._predict(
+        model,
+        dataset.X_test,
+    )
+
+    assert len(predictions) == len(dataset.X_test)
+
+    assert elapsed >= 0
+
+
+# ---------------------------------------------------------------------
+# Single Benchmark
+# ---------------------------------------------------------------------
+
+def test_run_single(dataset, model):
+
+    runner = BenchmarkRunner()
+
+    runner.add_metric(
+        "MAE",
+        lambda y, p: np.mean(np.abs(y - p)),
+    )
+
+    metrics = runner.run_single(
+        model,
+        dataset,
+    )
+
+    assert "MAE" in metrics
+
+    assert len(runner.results) == 1
+
+
+# ---------------------------------------------------------------------
+# Complete Benchmark
+# ---------------------------------------------------------------------
+
+def test_complete_run(dataset, model):
+
+    runner = BenchmarkRunner()
+
+    runner.add_dataset(dataset)
+
+    runner.add_model(model)
+
+    runner.add_metric(
+        "MAE",
+        lambda y, p: np.mean(np.abs(y - p)),
+    )
+
+    df = runner.run()
+
+    assert isinstance(df, pd.DataFrame)
+
+    assert len(df) == 1
+
+
+# ---------------------------------------------------------------------
+# Cross Validation Configuration
+# ---------------------------------------------------------------------
+
+def test_cv_configuration():
+
+    runner = BenchmarkRunner()
+
+    runner.configure_cross_validation(
+        strategy="kfold",
+        folds=10,
+    )
+
+    assert runner.cv_strategy == "kfold"
+
+    assert runner.cv_folds == 10
+
+
+# ---------------------------------------------------------------------
+# Checkpoint
+# ---------------------------------------------------------------------
+
+def test_checkpoint_cycle(tmp_path):
+
+    runner = BenchmarkRunner(
+        output_directory=str(tmp_path),
+    )
+
+    runner.history.append(
+        {"epoch": 1}
+    )
+
+    runner.save_checkpoint()
+
+    runner.history = []
+
+    runner.load_checkpoint()
+
+    assert len(runner.history) == 1
+
