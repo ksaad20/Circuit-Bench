@@ -689,14 +689,6 @@ def test_empty_dataframe():
 # ---------------------------------------------------------------------
 # Framework Integration
 # ---------------------------------------------------------------------
-
-
-try:
-    from src.benchmark.experiment import Experiment
-except ImportError:
-    Experiment = None
-
-
 def test_attach_leaderboard():
 
     runner = BenchmarkRunner()
