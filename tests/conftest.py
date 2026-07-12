@@ -154,13 +154,6 @@ def classification_dataframe():
 def random_state():
 
     return 42
-    
-git add tests/conftest.py
-
-git commit -m "Complete pytest fixtures"
-
-git push
-cat >> tests/conftest.py << 'EOF'
 
 @pytest.fixture
 def predictions():
