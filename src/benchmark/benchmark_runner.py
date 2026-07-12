@@ -1434,3 +1434,171 @@ class BenchmarkRunner:
 
         )
 
+
+    ####################################################################
+    # Checkpointing
+    ####################################################################
+
+    def save_checkpoint(
+        self,
+        filename="checkpoint.json",
+    ):
+        """
+        Save the current benchmark state.
+        """
+
+        checkpoint = {
+
+            "name": self.name,
+
+            "random_state": self.random_state,
+
+            "results": self.results,
+
+            "history": self.history,
+
+            "statistics": self.statistics,
+
+        }
+
+        path = self.output_directory / filename
+
+        with open(
+            path,
+            "w",
+            encoding="utf-8",
+        ) as f:
+
+            json.dump(
+                checkpoint,
+                f,
+                indent=4,
+            )
+
+        self.logger.info(
+            "Checkpoint saved to %s",
+            path,
+        )
+
+    ####################################################################
+    # Resume
+    ####################################################################
+
+    def load_checkpoint(
+        self,
+        filename="checkpoint.json",
+    ):
+        """
+        Resume a previous benchmark.
+        """
+
+        path = self.output_directory / filename
+
+        if not path.exists():
+
+            raise FileNotFoundError(path)
+
+        with open(
+            path,
+            "r",
+            encoding="utf-8",
+        ) as f:
+
+            checkpoint = json.load(f)
+
+        self.results = checkpoint.get(
+            "results",
+            [],
+        )
+
+        self.history = checkpoint.get(
+            "history",
+            [],
+        )
+
+        self.statistics = checkpoint.get(
+            "statistics",
+            {},
+        )
+
+        self.logger.info(
+            "Loaded checkpoint from %s",
+            path,
+        )
+
+    ####################################################################
+    # Export Everything
+    ####################################################################
+
+    def export_all(self):
+
+        self.export_results()
+
+        self.save_configuration()
+
+        self.save_checkpoint()
+
+        self.logger.info(
+            "All benchmark artifacts exported."
+        )
+
+    ####################################################################
+    # Benchmark Summary Dictionary
+    ####################################################################
+
+    def benchmark_summary(self):
+
+        elapsed = None
+
+        if hasattr(
+            self,
+            "_benchmark_start",
+        ):
+
+            elapsed = (
+                time.perf_counter()
+                - self._benchmark_start
+            )
+
+        return {
+
+            "benchmark": self.name,
+
+            "models": self.number_of_models,
+
+            "datasets": self.number_of_datasets,
+
+            "metrics": self.number_of_metrics,
+
+            "runs": len(self.results),
+
+            "elapsed_seconds": elapsed,
+
+            "output_directory": str(
+                self.output_directory
+            ),
+
+        }
+
+    ####################################################################
+    # Pretty Print Summary
+    ####################################################################
+
+    def print_benchmark_summary(self):
+
+        summary = self.benchmark_summary()
+
+        print()
+
+        print("=" * 70)
+
+        print("CircuitBench Benchmark Summary")
+
+        print("=" * 70)
+
+        for key, value in summary.items():
+
+            print(f"{key:<20}: {value}")
+
+        print("=" * 70)
+
