@@ -1,3 +1,7 @@
+from src.benchmark.leaderboard import Leaderboard
+from src.benchmark.reporting import BenchmarkReport
+
+
 """
 Unit tests for BenchmarkRunner.
 """
@@ -681,8 +685,6 @@ def test_empty_dataframe():
 # Framework Integration
 # ---------------------------------------------------------------------
 
-from src.benchmark.leaderboard import Leaderboard
-from src.benchmark.reporting import BenchmarkReport
 
 try:
     from src.benchmark.experiment import Experiment
