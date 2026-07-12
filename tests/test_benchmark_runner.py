@@ -1,5 +1,12 @@
+from __future__ import annotations
+
+from src.benchmark.benchmark_runner import BenchmarkRunner
 from src.benchmark.leaderboard import Leaderboard
 from src.benchmark.reporting import BenchmarkReport
+import numpy as np
+import pandas as pd
+import pytest
+
 
 try:
     from src.benchmark.experiment import Experiment
@@ -11,13 +18,8 @@ except ImportError:
 Unit tests for BenchmarkRunner.
 """
 
-from __future__ import annotations
 
-import numpy as np
-import pandas as pd
-import pytest
 
-from src.benchmark.benchmark_runner import BenchmarkRunner
 
 # ---------------------------------------------------------------------
 # Construction

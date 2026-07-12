@@ -1,0 +1,9 @@
+seed: 42
+
+splits:
+  train: 0.70
+  validation: 0.15
+  test: 0.15
+
+normalize: true
+shuffle: true

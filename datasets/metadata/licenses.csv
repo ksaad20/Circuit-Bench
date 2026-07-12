@@ -1,0 +1,5 @@
+dataset,license
+analog_filters,Apache-2.0
+buck_converter,Apache-2.0
+cmos_inverter,Apache-2.0
+fault_detection,Apache-2.0

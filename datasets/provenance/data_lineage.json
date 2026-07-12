@@ -1,0 +1,10 @@
+{
+  "pipeline": [
+    "raw",
+    "validation",
+    "preprocessing",
+    "feature_engineering",
+    "splitting",
+    "benchmarking"
+  ]
+}

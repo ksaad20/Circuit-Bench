@@ -1,0 +1,25 @@
+datasets:
+
+  analog_filters:
+    domain: analog
+    task: regression
+    version: 1.0.0
+    status: active
+
+  buck_converter:
+    domain: power
+    task: regression
+    version: 1.0.0
+    status: active
+
+  cmos_inverter:
+    domain: digital
+    task: regression
+    version: 1.0.0
+    status: active
+
+  fault_detection:
+    domain: fault_detection
+    task: classification
+    version: 1.0.0
+    status: active

@@ -1,0 +1,5 @@
+id,name,domain,task,version,status
+analog_filters,Analog Filters,analog,regression,1.0.0,active
+buck_converter,Buck Converter,power,regression,1.0.0,active
+cmos_inverter,CMOS Inverter,digital,regression,1.0.0,active
+fault_detection,Fault Detection,fault_detection,classification,1.0.0,active

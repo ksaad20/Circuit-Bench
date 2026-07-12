@@ -1,0 +1,13 @@
+sources:
+
+  analog_filters:
+    source: Internal
+
+  buck_converter:
+    source: Internal
+
+  cmos_inverter:
+    source: Internal
+
+  fault_detection:
+    source: Internal
