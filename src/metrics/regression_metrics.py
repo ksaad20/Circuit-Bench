@@ -373,3 +373,147 @@ __all__ = [
 
 ]
 
+
+    @staticmethod
+    def smape(
+        y_true,
+        y_pred,
+    ):
+        """
+        Symmetric Mean Absolute Percentage Error.
+        """
+
+        y_true = np.asarray(y_true, dtype=float)
+        y_pred = np.asarray(y_pred, dtype=float)
+
+        denominator = (
+            np.abs(y_true)
+            + np.abs(y_pred)
+        ) / 2.0
+
+        denominator = np.where(
+            denominator == 0,
+            np.finfo(float).eps,
+            denominator,
+        )
+
+        return float(
+            np.mean(
+                np.abs(y_true - y_pred)
+                / denominator
+            ) * 100
+        )
+
+    @staticmethod
+    def rmsle(
+        y_true,
+        y_pred,
+    ):
+        """
+        Root Mean Squared Logarithmic Error.
+        """
+
+        y_true = np.maximum(
+            np.asarray(y_true),
+            0,
+        )
+
+        y_pred = np.maximum(
+            np.asarray(y_pred),
+            0,
+        )
+
+        return float(
+            np.sqrt(
+                np.mean(
+                    (
+                        np.log1p(y_true)
+                        - np.log1p(y_pred)
+                    ) ** 2
+                )
+            )
+        )
+
+    @staticmethod
+    def pearson(
+        y_true,
+        y_pred,
+    ):
+
+        return float(
+            np.corrcoef(
+                y_true,
+                y_pred,
+            )[0, 1]
+        )
+
+    @staticmethod
+    def spearman(
+        y_true,
+        y_pred,
+    ):
+
+        from scipy.stats import spearmanr
+
+        return float(
+            spearmanr(
+                y_true,
+                y_pred,
+            ).correlation
+        )
+
+    @staticmethod
+    def concordance_correlation(
+        y_true,
+        y_pred,
+    ):
+        """
+        Lin's Concordance Correlation Coefficient.
+        """
+
+        y_true = np.asarray(y_true)
+        y_pred = np.asarray(y_pred)
+
+        mean_true = np.mean(y_true)
+        mean_pred = np.mean(y_pred)
+
+        var_true = np.var(y_true)
+        var_pred = np.var(y_pred)
+
+        covariance = np.mean(
+            (y_true - mean_true)
+            * (y_pred - mean_pred)
+        )
+
+        return float(
+            (
+                2 * covariance
+            )
+            /
+            (
+                var_true
+                + var_pred
+                + (mean_true - mean_pred) ** 2
+            )
+        )
+
+    @staticmethod
+    def normalized_rmse(
+        y_true,
+        y_pred,
+    ):
+
+        rmse = RegressionMetrics.rmse(
+            y_true,
+            y_pred,
+        )
+
+        return float(
+            rmse
+            /
+            (
+                np.max(y_true)
+                - np.min(y_true)
+            )
+        )
+
