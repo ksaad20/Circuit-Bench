@@ -82,6 +82,7 @@ def targets():
         size=100,
     )
 
+
 @pytest.fixture
 def classification_dataframe():
 

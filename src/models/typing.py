@@ -4,6 +4,7 @@ CircuitBench Typing Definitions
 
 Shared typing aliases used throughout the framework.
 """
+
 from __future__ import annotations
 
 import random
