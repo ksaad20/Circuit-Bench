@@ -2,7 +2,7 @@
 CircuitBench Test Fixtures
 ==========================
 
-Shared pytest fixtures used throughout the test suite.
+Shared pytest fixtures.
 """
 
 from __future__ import annotations
@@ -16,46 +16,64 @@ from sklearn.linear_model import LinearRegression
 
 
 class DummyDataset:
-    """
-    Minimal dataset for testing the BenchmarkRunner.
-    """
 
     def __init__(self):
+
         X, y = make_regression(
+
             n_samples=200,
+
             n_features=10,
+
             noise=0.1,
+
             random_state=42,
+
         )
 
         self.name = "Dummy Dataset"
 
         self.X = X
+
         self.y = y
 
         self.X_train = X[:150]
+
         self.X_test = X[150:]
 
         self.y_train = y[:150]
+
         self.y_test = y[150:]
 
         self.feature_names = [
+
             f"feature_{i}"
-            for i in range(X.shape[1])
+
+            for i in range(
+
+                X.shape[1]
+
+            )
+
         ]
 
 
 @pytest.fixture
 def dataset():
+
     return DummyDataset()
 
 
 @pytest.fixture
 def model():
+
     model = LinearRegression()
+
     model.name = "Linear Regression"
+
     return model
 
+EOFcat >> tests/conftest.py << 'EOF'
 
 @pytest.fixture
 def predictions():
@@ -63,6 +81,8 @@ def predictions():
     rng = np.random.default_rng(42)
 
     return rng.normal(
+        loc=0.0,
+        scale=1.0,
         size=100,
     )
 
@@ -73,6 +93,8 @@ def targets():
     rng = np.random.default_rng(123)
 
     return rng.normal(
+        loc=0.0,
+        scale=1.0,
         size=100,
     )
 
@@ -82,8 +104,146 @@ def dataframe():
 
     return pd.DataFrame(
         {
-            "RMSE": [0.12, 0.15, 0.10],
-            "MAE": [0.07, 0.08, 0.06],
-            "R2": [0.91, 0.88, 0.93],
+            "RMSE": [
+                0.12,
+                0.15,
+                0.10,
+            ],
+            "MAE": [
+                0.07,
+                0.08,
+                0.06,
+            ],
+            "R2": [
+                0.91,
+                0.88,
+                0.93,
+            ],
         }
     )
+
+
+@pytest.fixture
+def classification_dataframe():
+
+    return pd.DataFrame(
+        {
+            "Accuracy": [
+                0.94,
+                0.96,
+                0.95,
+            ],
+            "Precision": [
+                0.93,
+                0.95,
+                0.94,
+            ],
+            "Recall": [
+                0.92,
+                0.94,
+                0.93,
+            ],
+            "F1": [
+                0.925,
+                0.945,
+                0.935,
+            ],
+        }
+    )
+
+
+@pytest.fixture
+def random_state():
+
+    return 42
+
+EOFpython -m py_compile tests/conftest.py
+git add tests/conftest.py
+
+git commit -m "Complete pytest fixtures"
+
+git push
+cat >> tests/conftest.py << 'EOF'
+
+@pytest.fixture
+def predictions():
+
+    rng = np.random.default_rng(42)
+
+    return rng.normal(
+        loc=0.0,
+        scale=1.0,
+        size=100,
+    )
+
+
+@pytest.fixture
+def targets():
+
+    rng = np.random.default_rng(123)
+
+    return rng.normal(
+        loc=0.0,
+        scale=1.0,
+        size=100,
+    )
+
+
+@pytest.fixture
+def dataframe():
+
+    return pd.DataFrame(
+        {
+            "RMSE": [
+                0.12,
+                0.15,
+                0.10,
+            ],
+            "MAE": [
+                0.07,
+                0.08,
+                0.06,
+            ],
+            "R2": [
+                0.91,
+                0.88,
+                0.93,
+            ],
+        }
+    )
+
+
+@pytest.fixture
+def classification_dataframe():
+
+    return pd.DataFrame(
+        {
+            "Accuracy": [
+                0.94,
+                0.96,
+                0.95,
+            ],
+            "Precision": [
+                0.93,
+                0.95,
+                0.94,
+            ],
+            "Recall": [
+                0.92,
+                0.94,
+                0.93,
+            ],
+            "F1": [
+                0.925,
+                0.945,
+                0.935,
+            ],
+        }
+    )
+
+
+@pytest.fixture
+def random_state():
+
+    return 42
+
