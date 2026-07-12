@@ -500,3 +500,186 @@ def test_checkpoint_cycle(tmp_path):
 
     assert len(runner.history) == 1
 
+
+# ---------------------------------------------------------------------
+# Resource Profiling
+# ---------------------------------------------------------------------
+
+def test_profile_system():
+
+    runner = BenchmarkRunner()
+
+    profile = runner.profile_system()
+
+    assert isinstance(profile, dict)
+
+    assert "cpu_count" in profile
+
+    assert "memory_gb" in profile
+
+    assert profile["cpu_count"] >= 1
+
+
+def test_memory_usage():
+
+    runner = BenchmarkRunner()
+
+    memory = runner.memory_usage_mb()
+
+    assert isinstance(memory, float)
+
+    assert memory > 0
+
+
+def test_model_size(model):
+
+    runner = BenchmarkRunner()
+
+    size = runner.model_size_mb(model)
+
+    assert isinstance(size, float)
+
+    assert size >= 0
+
+
+# ---------------------------------------------------------------------
+# Export Results
+# ---------------------------------------------------------------------
+
+def test_export_results(tmp_path, model, dataset):
+
+    runner = BenchmarkRunner(
+        output_directory=str(tmp_path),
+    )
+
+    runner.add_result(
+        model,
+        dataset,
+        {
+            "RMSE": 0.25,
+        },
+    )
+
+    runner.export_results()
+
+    assert (
+        tmp_path / "results.csv"
+    ).exists()
+
+
+def test_save_configuration(tmp_path):
+
+    runner = BenchmarkRunner(
+        output_directory=str(tmp_path),
+    )
+
+    runner.save_configuration()
+
+    assert (
+        tmp_path / "configuration.json"
+    ).exists()
+
+
+def test_export_all(tmp_path):
+
+    runner = BenchmarkRunner(
+        output_directory=str(tmp_path),
+    )
+
+    runner.export_all()
+
+    assert (
+        tmp_path / "results.csv"
+    ).exists()
+
+    assert (
+        tmp_path / "configuration.json"
+    ).exists()
+
+    assert (
+        tmp_path / "checkpoint.json"
+    ).exists()
+
+
+# ---------------------------------------------------------------------
+# Summary
+# ---------------------------------------------------------------------
+
+def test_runner_summary():
+
+    runner = BenchmarkRunner()
+
+    summary = runner.summary()
+
+    assert summary is None
+
+
+def test_benchmark_summary_fields():
+
+    runner = BenchmarkRunner()
+
+    summary = runner.benchmark_summary()
+
+    required = {
+
+        "benchmark",
+
+        "models",
+
+        "datasets",
+
+        "metrics",
+
+        "runs",
+
+        "output_directory",
+
+    }
+
+    assert required.issubset(
+
+        summary.keys()
+
+    )
+
+
+# ---------------------------------------------------------------------
+# Utility Properties
+# ---------------------------------------------------------------------
+
+def test_property_counts(dataset, model):
+
+    runner = BenchmarkRunner()
+
+    runner.add_dataset(dataset)
+
+    runner.add_model(model)
+
+    runner.add_metric(
+
+        "MAE",
+
+        lambda y, p: 0,
+
+    )
+
+    assert runner.number_of_datasets == 1
+
+    assert runner.number_of_models == 1
+
+    assert runner.number_of_metrics == 1
+
+
+# ---------------------------------------------------------------------
+# Empty Results
+# ---------------------------------------------------------------------
+
+def test_empty_dataframe():
+
+    runner = BenchmarkRunner()
+
+    df = runner.results_dataframe()
+
+    assert df.empty
+
+
