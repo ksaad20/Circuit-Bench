@@ -1,15 +1,28 @@
 from pathlib import Path
 
-count = 0
+fixed = 0
 
-for file in Path(".").rglob("*.py"):
+for path in Path(".").rglob("*.py"):
     try:
-        text = file.read_text(encoding="utf-8")
-        new_text = text.rstrip() + "\n"
-        if text != new_text:
-            file.write_text(new_text, encoding="utf-8")
-            count += 1
-    except Exception as e:
-        print(f"Skipped {file}: {e}")
+        original = path.read_bytes()
 
-print(f"Fixed {count} Python files.")
+        # Normalize line endings
+        text = original.decode("utf-8", errors="ignore")
+        text = text.replace("\r\n", "\n").replace("\r", "\n")
+
+        # Remove ALL blank lines at EOF
+        text = text.rstrip()
+
+        # Add exactly one newline
+        text += "\n"
+
+        new = text.encode("utf-8")
+
+        if new != original:
+            path.write_bytes(new)
+            fixed += 1
+
+    except Exception as e:
+        print(path, e)
+
+print(f"Fixed {fixed} files.")

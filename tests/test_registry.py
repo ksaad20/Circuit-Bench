@@ -1,1 +1,1 @@
-
+"""Placeholder test module."""
