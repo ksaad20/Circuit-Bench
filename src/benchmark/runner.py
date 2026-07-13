@@ -28,6 +28,7 @@ class BenchmarkResult:
     memory: float = 0.0
     metadata: Dict[str, Any] = field(default_factory=dict)
 
+
 class BenchmarkRunner:
 
     def __init__(
