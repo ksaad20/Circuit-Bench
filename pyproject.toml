@@ -96,14 +96,6 @@ target-version = [
 line-length = 88
 target-version = "py310"
 
-testpaths = [
-    "tests"
-]
-
-python_files = [
-    "test_*.py"
-]
-
 [tool.setuptools.packages.find]
 include = [
     "src*"
