@@ -87,9 +87,7 @@ class BenchmarkRunner:
         failed = total - passed
 
         average_time = (
-            sum(r.execution_time for r in self.results) / total
-            if total
-            else 0.0
+            sum(r.execution_time for r in self.results) / total if total else 0.0
         )
 
         return {
