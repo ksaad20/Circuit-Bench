@@ -2,8 +2,8 @@ from __future__ import annotations
 
 import typer
 
-from src.cli.commands.doctor import app as doctor_app
 from src.cli.commands.create import app as create_app
+from src.cli.commands.doctor import app as doctor_app
 from src.cli.commands.version import app as version_app
 
 app = typer.Typer(
@@ -16,14 +16,15 @@ app.add_typer(create_app, name="create")
 app.add_typer(version_app, name="version")
 app.add_typer(doctor_app, name="doctor")
 
+
 @app.callback(invoke_without_command=True)
 def callback() -> None:
-    """Run the CLI application."""
-    pass
+    """CLI callback."""
+    return
 
 
 def main() -> None:
-    """CLI entry point."""
+    """Run the CLI."""
     app()
 
 
