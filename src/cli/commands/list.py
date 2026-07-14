@@ -1,10 +1,12 @@
-"""List available benchmarks."""
+"""List command."""
+
+from __future__ import annotations
 
 
-def execute(args):
-    print("Available Benchmarks")
-    print("--------------------")
-    print("converter_efficiency")
-    print("thermal_prediction")
-    print("analog_filter")
-    print("power_loss")
+def list_command(args) -> None:
+    """List available Circuit Bench resources."""
+    print("Listing available resources.")
+
+
+# Backward compatibility
+execute = list_command
