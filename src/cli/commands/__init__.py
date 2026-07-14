@@ -1,17 +1,4 @@
-<<<<<<< HEAD
-"""Circuit Bench CLI command package."""
-=======
-"""
-Circuit Bench CLI command package.
-
-Exports all Click command entry points.
-"""
-
 """CLI command package."""
-
-from .create import app as create_app
-from .version import app as version_app
->>>>>>> 1deeb61 (Fix CLI command package imports)
 
 from __future__ import annotations
 
@@ -19,7 +6,7 @@ from .benchmarks import benchmarks
 from .cache import cache
 from .clean import clean
 from .config import config
-from .create import app as create_app
+from .create import create
 from .datasets import datasets
 from .evaluate import evaluate
 from .export import export
@@ -32,14 +19,14 @@ from .run import run
 from .shell import shell
 from .stats import stats
 from .validate import validate
-from .version import app as version_app
+from .version import version
 
 __all__ = [
     "benchmarks",
     "cache",
     "clean",
     "config",
-    "create_app",
+    "create",
     "datasets",
     "evaluate",
     "export",
@@ -52,5 +39,5 @@ __all__ = [
     "shell",
     "stats",
     "validate",
-    "version_app",
+    "version",
 ]
