@@ -1,5 +1,15 @@
 """Export benchmark results."""
 
+from __future__ import annotations
 
-def execute(args):
-    print(f"Exporting results to {args.format}")
+
+def export(args) -> None:
+    """Export benchmark results."""
+    if hasattr(args, "output"):
+        print(f"Exporting results to: {args.output}")
+    else:
+        print("Exporting benchmark results.")
+
+
+# Backward compatibility
+execute = export
