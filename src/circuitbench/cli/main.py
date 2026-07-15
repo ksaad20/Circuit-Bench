@@ -1,5 +1,7 @@
 from __future__ import annotations
-
+# Change from a relative import (e.g., from .commands import app)
+# TO this absolute import:
+from circuitbench.cli.commands import app
 import typer
 
 # Corrected imports with 'src.' removed to fix the ModuleNotFoundError
