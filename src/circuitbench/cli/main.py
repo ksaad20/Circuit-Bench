@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import typer
 
-from circuitbench.cli.commands import app as command_app
 from circuitbench.cli.commands import (
     benchmarks_app,
     cache_app,
