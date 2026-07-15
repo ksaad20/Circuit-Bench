@@ -1,34 +1,27 @@
-"""
-Cache management commands for the Circuit Bench CLI.
-"""
-
 from __future__ import annotations
 
-import click
+import typer
+
+app = typer.Typer(help="Cache management commands.")
 
 
-@click.group(name="cache")
-def cache() -> None:
-    """Manage the Circuit Bench cache."""
-
-
-@cache.command("info")
+@app.command("info")
 def cache_info() -> None:
     """Display cache information."""
-    click.echo("Cache status: Available")
+    typer.echo("Cache status: Available")
 
 
-@cache.command("clear")
+@app.command("clear")
 def cache_clear() -> None:
     """Clear the cache."""
-    click.echo("Cache cleared successfully.")
+    typer.echo("Cache cleared successfully.")
 
 
-@cache.command("rebuild")
+@app.command("rebuild")
 def cache_rebuild() -> None:
     """Rebuild the cache."""
-    click.echo("Cache rebuilt successfully.")
+    typer.echo("Cache rebuilt successfully.")
 
 
 if __name__ == "__main__":
-    cache()
+    app()
