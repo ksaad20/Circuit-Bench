@@ -1,4 +1,3 @@
-
 """
 Evaluation commands for the Circuit Bench CLI.
 """

@@ -1,4 +1,3 @@
-
 """
 Benchmark management commands for the Circuit Bench CLI.
 """
@@ -72,4 +71,3 @@ def register(cli) -> None:
 
 if __name__ == "__main__":
     app()
-
