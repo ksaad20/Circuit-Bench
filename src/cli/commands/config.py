@@ -1,34 +1,19 @@
-"""
-Configuration commands for the Circuit Bench CLI.
-"""
-
 from __future__ import annotations
 
-import click
+import typer
+
+app = typer.Typer(help="Configuration commands.")
 
 
-@click.group(name="config")
-def config() -> None:
-    """Manage Circuit Bench configuration."""
+@app.command("show")
+def show() -> None:
+    typer.echo("Configuration loaded.")
 
 
-@config.command("show")
-def show_config() -> None:
-    """Display the current configuration."""
-    click.echo("No configuration values available.")
-
-
-@config.command("reset")
-def reset_config() -> None:
-    """Reset configuration to defaults."""
-    click.echo("Configuration reset successfully.")
-
-
-@config.command("validate")
-def validate_config() -> None:
-    """Validate the current configuration."""
-    click.echo("Configuration is valid.")
+@app.command("reset")
+def reset() -> None:
+    typer.echo("Configuration reset.")
 
 
 if __name__ == "__main__":
-    config()
+    app()
