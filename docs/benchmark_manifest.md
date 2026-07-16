@@ -12,6 +12,8 @@ git push origin main
 
 ## Benchmark Scope
 
+Circuit-Bench v1.0 provides a standardized benchmark for evaluating AI methods on electrical circuit analysis, optimization, surrogate modelling, and fault diagnosis using curated benchmark circuits and reproducible evaluation protocols.
+
 ## Circuit Categories
 
 ## Benchmark Tasks
