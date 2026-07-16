@@ -48,6 +48,10 @@ Circuit-Bench v1.0 currently includes benchmark circuits from the following cate
 
 Circuit categories are selected based on their importance in electrical engineering education, industrial design workflows, and AI-assisted circuit analysis. Each benchmark category contains representative circuits intended to evaluate machine learning algorithms under reproducible conditions.
 
+### Category Selection Criteria
+
+Circuit categories are selected based on their importance in electrical engineering education, industrial design workflows, and AI-assisted circuit analysis. Each benchmark category contains representative circuits intended to evaluate machine learning algorithms under reproducible conditions.
+
 ## Benchmark Coverage
 
 Each benchmark circuit should contain, where applicable:
