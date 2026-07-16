@@ -62,4 +62,17 @@ Circuit categories are selected based on their importance in electrical engineer
 
 ## Reproducibility
 
+## Version Policy
+
+Benchmark versions are immutable.
+
+Version updates may introduce:
+
+- additional benchmark circuits
+- new benchmark tasks
+- new metrics
+- additional simulators
+
+Existing benchmark identifiers and published benchmark results remain reproducible across releases whenever possible.
+
 ## Citation
