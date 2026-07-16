@@ -1,325 +1,237 @@
-
-# Models in Circuit Benchmarking
+# Models API Reference
 
 ## Overview
 
-Models are mathematical, computational, or data-driven representations of physical systems that enable simulation, prediction, optimization, and analysis. In Circuit-Bench, models form the foundation for circuit simulation, machine learning, benchmark evaluation, and reproducible research.
+The Models API provides a standardized interface for registering, loading, training, evaluating, exporting, and managing computational models within the Circuit-Bench ecosystem. It supports machine learning models, statistical models, analytical models, physics-based models, and simulation-assisted models used for electronic circuit benchmarking.
 
-Different types of models are used depending on the application, ranging from analytical equations to detailed device models and modern deep learning architectures.
-
----
-
-# What Is a Model?
-
-A model is a simplified representation of a real-world system designed to capture its important characteristics while remaining computationally manageable.
-
-Models are used to:
-
-* Predict behavior
-* Analyze performance
-* Compare algorithms
-* Simulate circuits
-* Generate datasets
-* Estimate unknown parameters
-* Support engineering decisions
+The API is designed to promote reproducibility, interoperability, and consistent evaluation across benchmark tasks.
 
 ---
 
-# Types of Models
+# Purpose
 
-Circuit-Bench supports a wide range of model categories.
+The Models API enables users to:
 
-## Mathematical Models
-
-Mathematical models describe circuits using equations.
-
-Examples include:
-
-* Ohm's Law
-* Kirchhoff's Laws
-* Differential equations
-* State-space models
-* Transfer functions
+* Register models
+* Load pretrained models
+* Train new models
+* Evaluate model performance
+* Export trained models
+* Compare multiple models
+* Integrate models into benchmark workflows
 
 ---
 
-## Device Models
+# Supported Model Categories
 
-Device models represent the electrical behavior of components.
-
-Examples include:
-
-* Resistors
-* Capacitors
-* Inductors
-* Diodes
-* BJTs
-* MOSFETs
-* IGBTs
-* Operational amplifiers
-
-These models are widely used in SPICE simulations.
-
----
-
-## Behavioral Models
-
-Behavioral models describe circuit functionality without modeling every physical detail.
-
-Advantages include:
-
-* Faster simulation
-* Reduced complexity
-* Easier system-level analysis
-
----
-
-## Physics-Based Models
-
-Physics-based models simulate the underlying physical processes within electronic devices.
-
-Applications include:
-
-* Semiconductor devices
-* Thermal behavior
-* Electromagnetic analysis
-* Battery systems
-* MEMS sensors
-
-These models often provide higher physical fidelity at increased computational cost.
-
----
-
-## Data-Driven Models
-
-Data-driven models learn patterns directly from measurements or simulations.
-
-Examples include:
-
-* Regression models
-* Decision trees
-* Random forests
-* Gradient boosting
-* Neural networks
-
-These models are increasingly used for benchmark prediction tasks.
-
----
-
-## Machine Learning Models
-
-Machine learning models can perform tasks such as:
+The API supports models for:
 
 * Classification
 * Regression
 * Fault diagnosis
+* Signal processing
+* Circuit analysis
+* Component recognition
 * Parameter estimation
-* Signal recognition
-* Performance prediction
-
-Representative algorithms include:
-
-* Support Vector Machines
-* Random Forests
-* XGBoost
-* Neural Networks
-* Graph Neural Networks
-* Transformers
+* Reliability prediction
+* Simulation acceleration
+* Optimization
 
 ---
 
-## Statistical Models
+# Core Workflow
 
-Statistical models describe uncertainty and variability.
+A typical workflow consists of:
 
-Examples include:
+1. Register or load a model
+2. Configure model parameters
+3. Load training data
+4. Train or fine-tune the model
+5. Validate performance
+6. Evaluate on benchmark datasets
+7. Export results and trained artifacts
+
+---
+
+# Model Registration
+
+Each registered model should include:
+
+* Model identifier
+* Model name
+* Version
+* Author
+* Description
+* Supported benchmark tasks
+* Input specification
+* Output specification
+* License information
+
+Registration ensures compatibility across Circuit-Bench workflows.
+
+---
+
+# Supported Model Types
+
+The API may support:
 
 * Linear regression
-* Bayesian models
-* Gaussian distributions
-* Probabilistic graphical models
+* Logistic regression
+* Decision trees
+* Random forests
+* Support vector machines
+* Gradient boosting
+* Neural networks
+* Convolutional neural networks
+* Graph neural networks
+* Transformer models
+* Custom user-defined models
 
-These models support uncertainty quantification and statistical inference.
+Support for additional architectures may be introduced in future releases.
 
 ---
 
-# Model Inputs
+# Inputs
 
-Models typically require one or more inputs, such as:
+Models may accept:
 
-* Circuit topology
-* Component values
-* Operating voltage
-* Temperature
-* Frequency
-* Current
+* Feature matrices
+* Circuit graphs
+* Simulation outputs
 * Waveforms
-* Sensor measurements
+* Images
+* Time-series data
+* Metadata
+* Configuration files
 
-Input quality strongly influences model accuracy.
+Input validation should occur before execution.
 
 ---
 
-# Model Outputs
+# Outputs
 
-Typical outputs include:
+Model outputs may include:
 
-* Voltage
-* Current
-* Power
-* Efficiency
-* Gain
-* Frequency response
 * Predicted labels
-* Estimated parameters
+* Regression values
 * Probability scores
+* Feature importance
+* Confidence estimates
+* Embeddings
+* Intermediate representations
 
-Outputs should be documented and validated.
+Outputs should follow standardized formats for downstream evaluation.
 
 ---
 
-# Model Training
+# Training Configuration
 
-For data-driven models, the typical workflow includes:
+Training options may include:
 
-1. Data collection
-2. Data preprocessing
-3. Feature engineering
-4. Model training
-5. Validation
-6. Testing
-7. Deployment
+* Learning rate
+* Batch size
+* Number of epochs
+* Optimizer
+* Loss function
+* Early stopping
+* Random seed
+* Hardware configuration
 
-Each stage should be reproducible and well documented.
+Training configurations should be archived to ensure reproducibility.
 
 ---
 
 # Model Evaluation
 
-Common evaluation metrics include:
+The API supports evaluation using:
 
-### Classification
-
-* Accuracy
-* Precision
-* Recall
-* F1 Score
-* ROC-AUC
-
-### Regression
-
-* Mean Absolute Error (MAE)
-* Mean Squared Error (MSE)
-* Root Mean Squared Error (RMSE)
-* R² Score
-
-### Circuit Performance
-
-* Runtime
+* Classification metrics
+* Regression metrics
+* Runtime statistics
 * Memory usage
-* Energy consumption
-* Prediction latency
+* Inference latency
+* Benchmark leaderboards
+
+Evaluation should be performed on standardized benchmark datasets whenever possible.
 
 ---
 
-# Model Validation
+# Model Management
 
-Models should be validated using independent data whenever possible.
+The API enables:
 
-Validation approaches include:
+* Model versioning
+* Model serialization
+* Checkpoint management
+* Configuration storage
+* Metadata inspection
+* Model comparison
 
-* Hold-out testing
-* Cross-validation
-* External datasets
-* Experimental measurements
-* Published benchmark results
-
-Validation improves confidence in benchmark outcomes.
-
----
-
-# Reproducibility
-
-Every model should document:
-
-* Version
-* Hyperparameters
-* Training dataset
-* Random seed
-* Software dependencies
-* Hardware platform
-* Evaluation protocol
-
-Reproducibility is a central goal of Circuit-Bench.
+These capabilities simplify long-term model maintenance.
 
 ---
 
-# Models in Circuit-Bench
+# Integration
 
-Representative benchmark applications include:
+The Models API integrates with:
 
-* Circuit classification
-* Fault diagnosis
-* Signal prediction
-* Parameter estimation
-* Component recognition
-* Reliability prediction
-* Simulation acceleration
-* Yield estimation
-* Performance optimization
+* Datasets API
+* Circuits API
+* Benchmarks API
+* Metrics API
+* Simulation API
+* Visualizations API
+* Reports API
 
-Circuit-Bench encourages transparent reporting of model assumptions, training procedures, and evaluation methods.
+This integration enables complete end-to-end benchmark workflows.
+
+---
+
+# Error Handling
+
+The API should detect and report:
+
+* Missing model files
+* Invalid configurations
+* Unsupported model architectures
+* Input shape mismatches
+* Training failures
+* Inference errors
+* Version incompatibilities
+
+Error messages should be informative and reproducible.
 
 ---
 
 # Best Practices
 
-When developing or evaluating models:
+When using the Models API:
 
-* Use high-quality datasets.
-* Preserve raw data.
-* Compare against baseline models.
-* Report multiple evaluation metrics.
-* Avoid data leakage.
-* Validate on independent datasets.
-* Archive model configurations.
-* Document limitations and assumptions.
-
----
-
-# Limitations
-
-All models are approximations of real-world systems.
-
-Potential limitations include:
-
-* Simplifying assumptions
-* Limited training data
-* Numerical approximation
-* Distribution shift
-* Measurement uncertainty
-* Model bias
-
-These limitations should be acknowledged in benchmark reports.
+* Use version-controlled model files.
+* Preserve training configurations.
+* Archive checkpoints.
+* Record software and hardware environments.
+* Use fixed random seeds where appropriate.
+* Evaluate on independent benchmark datasets.
+* Document model assumptions and limitations.
 
 ---
 
-# Related Topics
+# Related Documentation
 
-Readers may also find the following topics useful:
+Additional documentation includes:
 
-* Machine Learning
-* Circuit Simulation
-* Data Visualization
-* Statistics
-* Benchmark Evaluation
-* Analog Circuits
-* Digital Circuits
-* Mixed-Signal Circuits
-* Signal Processing
+* Theory: Models
+* Theory: Machine Learning
+* Theory: Metrics
+* API: Datasets
+* API: Benchmarks
+* API: Metrics
+* API: Simulation
+* API: Reports
 
 ---
 
 # Summary
 
-Models are fundamental to modern circuit analysis, simulation, and machine learning. Whether analytical, physical, statistical, or data-driven, well-designed models enable reproducible experimentation, meaningful benchmark comparisons, and reliable scientific conclusions. Circuit-Bench promotes transparent documentation and rigorous evaluation of models to support high-quality, reproducible research.
+The Models API provides a unified framework for managing computational models throughout the Circuit-Bench ecosystem. By standardizing model registration, training, evaluation, serialization, and integration with benchmark workflows, it supports transparent, reproducible, and scalable research in electronic circuit analysis and machine learning.
