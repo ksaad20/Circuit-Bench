@@ -7,6 +7,12 @@
 [![Tests](https://github.com/ksaad20/Circuit-Bench/actions/workflows/ci.yml/badge.svg)](https://github.com/ksaad20/Circuit-Bench/actions/workflows/ci.yml)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21387582.svg)](https://doi.org/10.5281/zenodo.21387582)
 
+## Citation
+
+This release of Circuit Bench is archived on Zenodo and can be cited using the following DOI:
+
+**https://doi.org/10.5281/zenodo.21387582**
+
 ## Architecture
 
 ![CircuitBench Architecture](docs/images/architecture.png)
