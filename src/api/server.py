@@ -9,7 +9,7 @@ FastAPI or similar HTTP server while preserving the public interface.
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Dict, List
+from typing import Dict
 
 
 __all__ = [
@@ -35,44 +35,44 @@ class APIServer:
         self._apis: Dict[str, APIInfo] = {}
 
         self.register(
-            "benchmarks",
-            "0.0.2",
-            "Benchmark execution and evaluation API.",
+            name="benchmarks",
+            version="0.0.2",
+            description="Benchmark execution and evaluation API.",
         )
         self.register(
-            "circuits",
-            "0.0.2",
-            "Circuit loading and management API.",
+            name="circuits",
+            version="0.0.2",
+            description="Circuit loading and management API.",
         )
         self.register(
-            "datasets",
-            "0.0.2",
-            "Dataset discovery and loading API.",
+            name="datasets",
+            version="0.0.2",
+            description="Dataset discovery and loading API.",
         )
         self.register(
-            "metrics",
-            "0.0.2",
-            "Evaluation metrics API.",
+            name="metrics",
+            version="0.0.2",
+            description="Evaluation metrics API.",
         )
         self.register(
-            "models",
-            "0.0.2",
-            "Machine learning model API.",
+            name="models",
+            version="0.0.2",
+            description="Machine learning model API.",
         )
         self.register(
-            "simulation",
-            "0.0.2",
-            "Circuit simulation API.",
+            name="simulation",
+            version="0.0.2",
+            description="Circuit simulation API.",
         )
         self.register(
-            "visualizations",
-            "0.0.2",
-            "Visualization and plotting API.",
+            name="visualizations",
+            version="0.0.2",
+            description="Visualization and plotting API.",
         )
         self.register(
-            "reports",
-            "0.0.2",
-            "Report generation API.",
+            name="reports",
+            version="0.0.2",
+            description="Report generation API.",
         )
 
     def register(
@@ -90,31 +90,38 @@ class APIServer:
         )
 
     def get(self, name: str) -> APIInfo:
-        """Return information for one API."""
+        """Return information for a registered API."""
+
         return self._apis[name]
 
-    def list(self) -> List[APIInfo]:
+    def list(self) -> list[APIInfo]:
         """Return all registered APIs."""
+
         return sorted(
             self._apis.values(),
             key=lambda api: api.name,
         )
 
-    def names(self) -> List[str]:
+    def names(self) -> list[str]:
         """Return API names."""
+
         return sorted(self._apis.keys())
 
     def count(self) -> int:
-        """Return number of registered APIs."""
+        """Return the number of registered APIs."""
+
         return len(self._apis)
 
 
 def create_server() -> APIServer:
-    """Create a default API server."""
+    """Create and return the default API server."""
+
     return APIServer()
 
 
-if __name__ == "__main__":
+def main() -> None:
+    """Run a simple CLI demonstration."""
+
     server = create_server()
 
     print("Circuit-Bench API Server")
@@ -125,3 +132,7 @@ if __name__ == "__main__":
 
     print("-" * 30)
     print(f"Total APIs: {server.count()}")
+
+
+if __name__ == "__main__":
+    main()
