@@ -1,0 +1,178 @@
+# Dataset Card: Validation
+
+## Overview
+
+The `datasets/validation/` folder contains datasets reserved for validating machine learning models, benchmark algorithms, and circuit analysis workflows within Circuit-Bench. Validation datasets are used during model development to monitor performance, tune hyperparameters, and evaluate generalization before final testing.
+
+---
+
+## Purpose
+
+The validation datasets are intended to:
+
+- Evaluate model performance during development
+- Support hyperparameter optimization
+- Monitor training progress
+- Detect overfitting
+- Assess model generalization
+- Enable reproducible benchmarking
+
+---
+
+## Intended Applications
+
+These datasets are suitable for:
+
+- Machine learning validation
+- Circuit classification
+- Circuit regression
+- Fault detection
+- Benchmark evaluation
+- Model selection
+- Algorithm development
+
+---
+
+## Folder Organization
+
+A typical directory structure may resemble:
+
+```text
+validation/
+├── analog/
+├── digital/
+├── passive/
+├── active/
+├── rf/
+├── power_electronics/
+├── mixed_signal/
+├── metadata/
+└── README.md
+```
+
+The organization may expand as new benchmark tasks are introduced.
+
+---
+
+## Dataset Contents
+
+Validation datasets may include:
+
+- Circuit netlists
+- Schematics
+- Simulation results
+- Feature matrices
+- Labels
+- Metadata
+- Reference outputs
+- Annotation files
+
+---
+
+## Data Quality
+
+Validation datasets should undergo rigorous quality assurance, including:
+
+- Manual verification
+- Duplicate detection
+- Metadata validation
+- Schema validation
+- Label consistency checks
+- File integrity verification
+
+---
+
+## Recommended Usage
+
+Researchers are encouraged to:
+
+- Use validation data only during model development.
+- Keep validation datasets separate from testing datasets.
+- Avoid modifying validation labels.
+- Record validation dataset versions in publications.
+- Report evaluation metrics consistently.
+
+---
+
+## Reproducibility
+
+To facilitate reproducible research, users should document:
+
+- Dataset version
+- Validation protocol
+- Software version
+- Model configuration
+- Random seed (if applicable)
+
+---
+
+## Example Workflow
+
+```text
+Training Dataset
+        │
+        ▼
+Model Training
+        │
+        ▼
+Validation Dataset
+        │
+        ▼
+Hyperparameter Tuning
+        │
+        ▼
+Final Model
+        │
+        ▼
+Testing Dataset
+```
+
+---
+
+## Limitations
+
+Validation datasets may not:
+
+- Represent all real-world circuit designs
+- Cover every circuit topology
+- Include every component technology
+- Capture all manufacturing variations
+
+Performance on validation datasets may not directly translate to unseen real-world data.
+
+---
+
+## Best Practices
+
+Users should:
+
+- Never train directly on validation data.
+- Avoid repeated tuning on the same validation split.
+- Maintain clear separation between training, validation, and testing datasets.
+- Report validation methodology transparently.
+
+---
+
+## Future Improvements
+
+Future validation datasets may include:
+
+- Larger benchmark collections
+- Mixed-signal circuits
+- RF and microwave designs
+- Power electronics systems
+- Multi-label classification tasks
+- Time-series simulation data
+- Physics-informed benchmark datasets
+
+---
+
+## License
+
+Validation datasets are distributed under the license accompanying each dataset or, unless otherwise specified, under the license of the Circuit-Bench repository.
+
+---
+
+## Contact
+
+Questions, corrections, or contributions related to validation datasets are welcome through the Circuit-Bench GitHub repository.
