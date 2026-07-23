@@ -1,0 +1,61 @@
+name: Publish Python Package to PyPI
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch: # Allows manual trigger from the GitHub Actions UI
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build distribution files
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Install build tools
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install build
+
+      - name: Build sdist and wheel
+        run: python -m build
+
+      - name: Store distribution artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: pypi-artifacts
+          path: dist/
+          retention-days: 1
+
+  publish-pypi:
+    name: Upload release to PyPI
+    needs: build
+    runs-on: ubuntu-latest
+    
+    # Matching the PyPI Trusted Publisher environment
+    environment:
+      name: pypi
+      url: https://pypi.org/p/circuitbench
+      
+    # MANDATORY: Grants OIDC token generation rights for tokenless publishing
+    permissions:
+      id-token: write
+
+    steps:
+      - name: Download distribution artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: pypi-artifacts
+          path: dist/
+
+      - name: Publish package to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
