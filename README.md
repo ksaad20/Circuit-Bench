@@ -19,6 +19,35 @@ An open-source evaluation platform for artificial intelligence methods in electr
 ```bash
 pip install circuitbench
 
+## 🚀 Quickstart & Interactive Demo
+
+Get started with **CircuitBench** in seconds without any local setup or installation required. 
+
+Run our interactive tutorial directly in your browser using Google Colab:
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ksaad20/Circuit-Bench/blob/main/notebooks/quickstart.ipynb)
+
+### Local Installation
+
+You can also install the latest release directly from PyPI:
+
+```bash
+pip install circuitbench
+
+## Basic Usage
+
+import circuitbench as cb
+
+# Load a pre-simulated benchmark dataset
+dataset = cb.load_dataset("analog_opamp")
+
+# Quick preview of circuit parameters and targets
+print(dataset.head())
+
+# Run standard evaluation on your model predictions
+metrics = cb.evaluate(y_true=dataset['target'], y_pred=your_model_predictions)
+print(f"Benchmark Performance: {metrics}")
+
 ## Citation
 
 This release of Circuit Bench is archived on Zenodo and can be cited using the following DOI:
