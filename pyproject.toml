@@ -69,6 +69,23 @@ target-version = ["py310", "py311", "py312"]
 line-length = 88
 target-version = "py310"
 
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # Pyflakes
+    "I",   # isort (import sorting)
+    "B",   # flake8-bugbear
+    "BLE", # flake8-blind-except
+    "PLW", # Pylint warnings
+    "RUF"  # Ruff-specific rules
+]
+ignore = []
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+
 [tool.flake8]
 max-line-length = 88
 extend-ignore = ["E203", "W503"]
