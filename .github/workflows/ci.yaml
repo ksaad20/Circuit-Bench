@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   build-and-test:
@@ -28,21 +28,11 @@ jobs:
           pip install ruff pytest
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
-      - name: Run Ruff Linter (Auto-fix & Non-blocking)
-        run: ruff check src tests --fix --unsafe-fixes --exit-zero
+      - name: Run Ruff Lint Check
+        run: ruff check src tests
 
-      - name: Run Ruff Format
-        run: ruff format src tests
-
-      - name: Commit fixes (if any)
-        if: always()
-        run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add -A
-          git diff-index --quiet HEAD || git commit -m "style: apply automated ruff fixes"
-          git push || echo "No changes to push or unable to push automatically."
+      - name: Run Ruff Format Check
+        run: ruff format --check src tests
 
       - name: Run Pytest
         run: pytest
-        
