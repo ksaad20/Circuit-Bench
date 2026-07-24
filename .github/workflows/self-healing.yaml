@@ -1,0 +1,98 @@
+name: CircuitBench Self-Healing CI
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main, develop]
+  pull_request:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: self-heal-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  heal:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install package
+        run: |
+          python -m pip install --upgrade pip
+
+          if [ -f python/requirements.txt ]; then
+            pip install -r python/requirements.txt
+          fi
+
+          pip install -e .
+
+          pip install \
+            ruff \
+            black \
+            isort \
+            autoflake \
+            pyupgrade \
+            docformatter
+
+      - name: Healing loop
+        shell: bash
+        run: |
+          set +e
+
+          for pass in 1 2 3 4 5
+          do
+
+            echo "PASS $pass"
+
+            ruff check . --fix --unsafe-fixes
+
+            ruff format .
+
+            black .
+
+            isort .
+
+            autoflake \
+              --recursive \
+              --in-place \
+              --remove-all-unused-imports \
+              --remove-unused-variables .
+
+            pyupgrade $(find . -name "*.py")
+
+            docformatter \
+              --recursive \
+              --in-place .
+
+            git diff --quiet && break
+
+          done
+
+      - name: Verify repository
+        run: |
+          ruff check .
+          ruff format --check .
+          pytest -v
+
+      - name: Commit fixes
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@users.noreply.github.com
+
+          if ! git diff --quiet
+          then
+            git add .
+            git commit -m "Automatic repository healing"
+            git push
+          fi
