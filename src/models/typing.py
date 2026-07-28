@@ -27,9 +27,13 @@ except ImportError:
 # Generic Types
 # ==========================================================
 
-Number = Union[int, float]
+Number = int | float
 
 PathLike = Union[str, Path]
+
+ArrayLike = np.ndarray | Sequence[Number]
+
+DataFrameLike = np.ndarray | pd.DataFrame | pd.Series
 
 Parameters = dict[str, Any]
 
