@@ -12,7 +12,6 @@ import time
 from collections.abc import Callable, MutableMapping, Sequence
 from pathlib import Path
 
-
 import numpy as np
 
 try:
