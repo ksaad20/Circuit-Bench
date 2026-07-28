@@ -1,4 +1,4 @@
-# ruff.toml — zero-error config for Circuit-Bench
+# ruff.toml — zero loop, zero conflict config
 
 target-version = "py311"
 line-length = 88
@@ -13,8 +13,13 @@ select = [
     "W",   # pycodestyle warnings
     "UP",  # pyupgrade
 ]
+# These rules are known to conflict with the formatter (fix loops):
 ignore = [
-    "E501",  # line-too-long (handled by formatter)
+    "E501",  # line-too-long (formatter handles it)
+    "COM812",  # trailing comma — fights ruff format
+    "COM819",  # trailing comma prohibited — fights ruff format
+    "ISC001",  # implicit string concat — fights ruff format
+    "W191",  # indentation contains tabs — formatter handles it
 ]
 
 [lint.pydocstyle]
