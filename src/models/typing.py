@@ -29,7 +29,7 @@ except ImportError:
 
 Number = int | float
 
-PathLike = Union[str, Path]
+PathLike = str | Path
 
 ArrayLike = np.ndarray | Sequence[Number]
 
