@@ -11,10 +11,7 @@ import random
 import time
 from collections.abc import Callable, MutableMapping, Sequence
 from pathlib import Path
-from typing import (
-    Any,
-    Union,
-)
+from typing import Any, Optional
 
 import numpy as np
 
