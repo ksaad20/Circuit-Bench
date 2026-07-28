@@ -45,7 +45,7 @@ dependencies = [
 [project.optional-dependencies]
 explainability = ["shap>=0.45"]
 development = [
-    "pytest>=8.0", "pytest-cov", "black", "ruff", "flake8", "mypy", "pre-commit"
+    "pytest>=8.0", "pytest-cov", "black", "ruff", "flake8", "mypy", "pre-commit", "typing_extensions>=4.4"
 ]
 docs = ["sphinx", "furo", "myst-parser", "sphinx-autodoc-typehints"]
 
