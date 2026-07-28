@@ -8,16 +8,31 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "circuitbench"
 version = "1.0.0"
-description = "A reference for benchmarking and evaluation for artificial intelligence driven electrical circuit design."
+description = "A reference benchmarking and evaluation framework for AI-driven electrical circuit design."
 readme = "README.md"
-license = {text = "Apache-2.0"}
+license = { text = "Apache-2.0" }
 requires-python = ">=3.10"
-authors = [{name = "Asif Kazi"}]
-keywords = [
-    "machine-learning", "benchmark", "artificial-intelligence", "deep-learning",
-    "classification", "regression", "evaluation", "benchmarking", "statistics",
-    "explainable-ai", "calibration", "research-software", "scientific-computing"
+
+authors = [
+    { name = "Asif Kazi" }
 ]
+
+keywords = [
+    "machine-learning",
+    "benchmark",
+    "artificial-intelligence",
+    "deep-learning",
+    "classification",
+    "regression",
+    "evaluation",
+    "benchmarking",
+    "statistics",
+    "explainable-ai",
+    "calibration",
+    "research-software",
+    "scientific-computing"
+]
+
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Science/Research",
@@ -32,6 +47,7 @@ classifiers = [
     "Topic :: Scientific/Engineering :: Information Analysis",
     "Topic :: Software Development :: Libraries :: Python Modules"
 ]
+
 dependencies = [
     "numpy>=1.24",
     "pandas>=2.0",
@@ -40,58 +56,115 @@ dependencies = [
     "matplotlib>=3.8",
     "typer>=0.12",
     "rich>=13",
+    "typing_extensions>=4.4"
 ]
+
 
 [project.optional-dependencies]
-explainability = ["shap>=0.45"]
-development = [
-    "pytest>=8.0", "pytest-cov", "black", "ruff", "flake8", "mypy", "pre-commit", "typing_extensions>=4.4"
+
+explainability = [
+    "shap>=0.45"
 ]
-docs = ["sphinx", "furo", "myst-parser", "sphinx-autodoc-typehints"]
+
+development = [
+    "pytest>=8.0",
+    "pytest-cov",
+    "black",
+    "ruff",
+    "flake8",
+    "mypy",
+    "pre-commit"
+]
+
+docs = [
+    "sphinx",
+    "furo",
+    "myst-parser",
+    "sphinx-autodoc-typehints"
+]
+
 
 [project.urls]
+
 Homepage = "https://github.com/ksaad20/Circuit-Bench"
 Repository = "https://github.com/ksaad20/Circuit-Bench"
 Issues = "https://github.com/ksaad20/Circuit-Bench/issues"
 
+
 [project.scripts]
+
 circuitbench = "circuitbench.cli.main:main"
 
+
 [tool.setuptools.packages.find]
+
 where = ["src"]
 include = ["circuitbench*"]
 
+
 [tool.black]
+
 line-length = 88
-target-version = ["py310", "py311", "py312"]
+target-version = [
+    "py310",
+    "py311",
+    "py312"
+]
+
 
 [tool.ruff]
+
 line-length = 88
 target-version = "py310"
 
+
 [tool.ruff.lint]
+
 select = [
-    "E",   # pycodestyle errors
-    "W",   # pycodestyle warnings
-    "F",   # Pyflakes
-    "I",   # isort (import sorting)
-    "B",   # flake8-bugbear
-    "BLE", # flake8-blind-except
-    "PLW", # Pylint warnings
-    "RUF"  # Ruff-specific rules
+    "E",
+    "W",
+    "F",
+    "I",
+    "B",
+    "BLE",
+    "PLW",
+    "RUF"
 ]
+
 ignore = []
 
+
 [tool.ruff.format]
+
 quote-style = "double"
 indent-style = "space"
 
+
 [tool.flake8]
+
 max-line-length = 88
-extend-ignore = ["E203", "W503"]
+extend-ignore = [
+    "E203",
+    "W503"
+]
+
 
 [tool.pytest.ini_options]
-testpaths = ["tests"]
-python_files = ["test_*.py"]
-pythonpath = ["src"]
+
+minversion = "8.0"
+testpaths = [
+    "tests"
+]
+python_files = [
+    "test_*.py"
+]
+pythonpath = [
+    "src"
+]
 addopts = "-ra"
+
+
+[tool.mypy]
+
+python_version = "3.10"
+ignore_missing_imports = true
