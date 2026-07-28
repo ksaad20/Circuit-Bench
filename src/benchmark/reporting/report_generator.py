@@ -21,4 +21,3 @@ class BenchmarkReport:
 
     def summary(self) -> str:
         return f"{self.title}: {len(self.results or {})} result(s)"
-

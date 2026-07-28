@@ -84,4 +84,3 @@ class ModePredictor(BaselineClassifier):
     def __repr__(self):
 
         return f"ModePredictor(mode={self.mode_}, fitted={self.is_fitted})"
-

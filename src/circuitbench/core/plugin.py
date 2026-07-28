@@ -64,4 +64,3 @@ class PluginManager:
             plugin.shutdown()
 
         self.plugins.clear()
-

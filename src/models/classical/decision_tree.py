@@ -125,4 +125,3 @@ class DecisionTreeRegressionModel(SklearnModel):
 __all__ = [
     "DecisionTreeRegressionModel",
 ]
-

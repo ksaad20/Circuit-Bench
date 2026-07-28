@@ -21,4 +21,3 @@ class DatasetError(CLIError):
 
 class ConfigurationError(CLIError):
     """Configuration loading error."""
-

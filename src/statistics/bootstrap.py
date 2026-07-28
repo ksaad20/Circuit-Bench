@@ -94,4 +94,3 @@ class Bootstrap:
             ),
             samples=scores,
         )
-

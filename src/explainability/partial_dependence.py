@@ -99,4 +99,3 @@ class PartialDependence:
         plt.tight_layout()
 
         return fig, ax
-

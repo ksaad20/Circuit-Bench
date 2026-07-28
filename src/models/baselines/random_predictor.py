@@ -134,4 +134,3 @@ class RandomPredictor(BaselineRegressor):
             f"range=[{self.minimum_}, {self.maximum_}], "
             f"random_state={self.random_state})"
         )
-

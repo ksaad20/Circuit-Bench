@@ -143,4 +143,3 @@ class ExperimentLogger:
                     runs.append(json.load(f))
 
         return runs
-

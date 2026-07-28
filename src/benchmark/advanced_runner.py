@@ -157,4 +157,3 @@ class AdvancedBenchmarkRunner:
             rows.append(row)
 
         return pd.DataFrame(rows)
-

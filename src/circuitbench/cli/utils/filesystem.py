@@ -35,4 +35,3 @@ def copy_file(source: str | Path, destination: str | Path) -> None:
 def move_file(source: str | Path, destination: str | Path) -> None:
     """Move a file."""
     shutil.move(source, destination)
-

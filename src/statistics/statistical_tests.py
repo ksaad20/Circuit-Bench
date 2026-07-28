@@ -164,4 +164,3 @@ class StatisticalTests:
             significant=bool(p < alpha),
             alpha=alpha,
         )
-

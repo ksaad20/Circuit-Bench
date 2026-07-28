@@ -154,4 +154,3 @@ __all__ = [
     "remove_handler",
     "set_level",
 ]
-

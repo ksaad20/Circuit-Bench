@@ -109,4 +109,3 @@ class BenchmarkSuite:
             output_csv,
             index=False,
         )
-

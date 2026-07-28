@@ -194,4 +194,3 @@ class SklearnModel(BaseModel, ABC):
 __all__ = [
     "SklearnModel",
 ]
-

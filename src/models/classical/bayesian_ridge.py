@@ -143,4 +143,3 @@ class BayesianRidgeRegressionModel(SklearnModel):
 __all__ = [
     "BayesianRidgeRegressionModel",
 ]
-

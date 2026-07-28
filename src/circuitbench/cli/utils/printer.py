@@ -17,4 +17,3 @@ def warning(message):
 
 def error(message):
     print(f"[ERROR] {message}")
-

@@ -14,4 +14,3 @@ def test_plot_creation():
     assert len(fig.axes) == 1
 
     plt.close(fig)
-

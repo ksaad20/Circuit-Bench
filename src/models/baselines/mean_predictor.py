@@ -121,4 +121,3 @@ class MeanPredictor(BaselineRegressor):
     def __repr__(self):
 
         return f"MeanPredictor(mean={self.mean_}, fitted={self.is_fitted})"
-

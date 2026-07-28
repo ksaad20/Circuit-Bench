@@ -16,4 +16,3 @@ def test_cli_runs() -> None:
         env=env,
     )
     assert result.returncode == 0, f"CLI failed: {result.stderr}"
-

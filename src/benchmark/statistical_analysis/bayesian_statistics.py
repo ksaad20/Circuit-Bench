@@ -177,4 +177,3 @@ class BayesianStatistics:
 __all__ = [
     "BayesianStatistics",
 ]
-

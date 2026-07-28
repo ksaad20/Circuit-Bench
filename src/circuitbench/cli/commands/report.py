@@ -43,4 +43,3 @@ def register(cli) -> None:
     Compatibility registration function.
     """
     cli.add_typer(app, name="report")
-

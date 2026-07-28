@@ -101,4 +101,3 @@ class ICEPlots:
         plt.tight_layout()
 
         return fig, ax
-

@@ -26,4 +26,3 @@ class Benchmark(ABC):
     @abstractmethod
     def leaderboard(self):
         pass
-

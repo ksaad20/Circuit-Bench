@@ -86,4 +86,3 @@ class PermutationImportance:
             .sort_values("importance", ascending=False)
             .reset_index(drop=True)
         )
-

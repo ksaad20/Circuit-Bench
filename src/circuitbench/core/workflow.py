@@ -47,4 +47,3 @@ class Workflow:
     def __len__(self):
 
         return len(self.tasks)
-

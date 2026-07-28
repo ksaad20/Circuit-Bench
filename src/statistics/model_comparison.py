@@ -116,4 +116,3 @@ class ModelComparison:
             p_value=float(p),
             bootstrap_differences=diffs,
         )
-

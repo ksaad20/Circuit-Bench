@@ -29,4 +29,3 @@ class BenchmarkRunner:
         logging.info("Finished.")
 
         return metrics
-

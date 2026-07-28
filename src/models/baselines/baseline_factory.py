@@ -137,4 +137,3 @@ class BaselineFactory:
 __all__ = [
     "BaselineFactory",
 ]
-

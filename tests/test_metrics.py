@@ -24,4 +24,3 @@ def test_positive_error():
     y = np.array([3, 4])
 
     assert mse(x, y) > 0
-

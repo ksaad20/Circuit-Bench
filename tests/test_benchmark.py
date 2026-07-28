@@ -22,4 +22,3 @@ def test_benchmark_is_list():
     from src import benchmark
 
     assert isinstance(benchmark.AVAILABLE_BENCHMARKS, list)
-

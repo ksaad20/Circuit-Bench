@@ -30,4 +30,3 @@ def parse_args(parser: argparse.ArgumentParser | None = None):
         parser = build_parser()
 
     return parser.parse_args()
-

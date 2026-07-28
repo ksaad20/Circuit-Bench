@@ -69,4 +69,3 @@ def doctor(verbose: bool = typer.Option(False, "--verbose", "-v")) -> None:
             fg=typer.colors.YELLOW,
             bold=True,
         )
-

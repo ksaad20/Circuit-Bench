@@ -137,4 +137,3 @@ def test_importance_dataframe():
 
     assert "feature" in df.columns
     assert "importance" in df.columns
-

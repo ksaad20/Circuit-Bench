@@ -29,4 +29,3 @@ class TrainTestSplitter:
             random_state=self.random_state,
             shuffle=self.shuffle,
         )
-

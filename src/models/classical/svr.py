@@ -138,4 +138,3 @@ class SupportVectorRegressionModel(SklearnModel):
 __all__ = [
     "SupportVectorRegressionModel",
 ]
-

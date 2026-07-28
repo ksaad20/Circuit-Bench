@@ -38,4 +38,3 @@ class Pipeline:
     def __repr__(self):
 
         return f"Pipeline(name={self.name}, steps={len(self.steps)})"
-

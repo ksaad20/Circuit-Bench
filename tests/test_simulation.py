@@ -18,4 +18,3 @@ def test_initial_voltage():
 def test_final_voltage():
 
     assert rc_voltage(100, 1) > 0.999
-

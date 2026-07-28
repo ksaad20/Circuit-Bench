@@ -22,4 +22,3 @@ def install(shell: str):
         raise ValueError(f"Unsupported shell: {shell}")
 
     print(f"Shell completion installation for {shell} is not yet implemented.")
-

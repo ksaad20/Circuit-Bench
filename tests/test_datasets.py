@@ -23,4 +23,3 @@ def test_contains_categories():
 
     for folder in expected:
         assert (DATASET_DIR / folder).exists()
-

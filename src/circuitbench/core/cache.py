@@ -45,4 +45,3 @@ class Cache:
 
     def list(self):
         return sorted(self.cache_directory.glob("*.pkl"))
-

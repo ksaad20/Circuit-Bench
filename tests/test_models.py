@@ -19,4 +19,3 @@ def test_linear_regression_fit():
     prediction = model.predict([[4]])
 
     assert prediction[0] > 7
-

@@ -149,4 +149,3 @@ class ClassificationPlots:
 __all__ = [
     "ClassificationPlots",
 ]
-

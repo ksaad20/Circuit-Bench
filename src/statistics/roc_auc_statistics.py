@@ -98,4 +98,3 @@ class ROCAUCStatistics:
             ),
             bootstrap_scores=scores,
         )
-

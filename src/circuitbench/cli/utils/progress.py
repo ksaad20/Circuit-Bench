@@ -95,4 +95,3 @@ def track(iterable: Iterable[Any], *args: Any, **kwargs: Any) -> Iterator[Any]:
 
 
 __all__ = ["Progress", "track"]
-

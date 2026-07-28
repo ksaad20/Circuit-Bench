@@ -108,4 +108,3 @@ class BenchmarkRunner:
             )
 
         return output
-

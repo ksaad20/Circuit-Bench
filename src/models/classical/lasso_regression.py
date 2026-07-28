@@ -171,4 +171,3 @@ class LassoRegressionModel(BaseModel):
         return (
             f"LassoRegressionModel(alpha={self.model.alpha}, fitted={self.is_fitted})"
         )
-

@@ -10,4 +10,3 @@ def execute(args):
     print(f"Python : {platform.python_version()}")
     print(f"Platform : {platform.system()}")
     print(f"Executable : {sys.executable}")
-

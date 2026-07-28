@@ -37,4 +37,3 @@ class BaselineRegressor(BaselineModel):
             self.constant_,
             dtype=float,
         )
-

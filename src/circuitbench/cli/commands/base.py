@@ -19,4 +19,3 @@ def app():
 def info():
     """Display project information."""
     click.echo("Circuit-Bench: Computational physics for trade arbitrage.")
-
