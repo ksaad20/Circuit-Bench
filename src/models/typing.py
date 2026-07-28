@@ -13,6 +13,11 @@ from collections.abc import Callable, MutableMapping, Sequence
 from pathlib import Path
 from typing import Any
 
+try:
+    from typing import Self  # Python 3.11+
+except ImportError:
+    from typing_extensions import Self  # Python 3.10
+
 import numpy as np
 
 try:
