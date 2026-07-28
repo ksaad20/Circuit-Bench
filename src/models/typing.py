@@ -47,17 +47,10 @@ Config = dict[str, Any]
 # Machine Learning Data
 # ==========================================================
 
-ArrayLike = Union[
-    np.ndarray,
-    Sequence[Number],
-]
+ArrayLike = np.ndarray | Sequence[Number]
 
 if pd is not None:
-    DataFrameLike = Union[
-        np.ndarray,
-        pd.DataFrame,
-        pd.Series,
-    ]
+    DataFrameLike = np.ndarray | pd.DataFrame | pd.Series
 
 else:
     DataFrameLike = np.ndarray
