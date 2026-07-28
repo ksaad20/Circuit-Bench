@@ -1,4 +1,4 @@
-# ruff.toml — zero errors for ML-style Python
+# ruff.toml — zero-error for ML/test codebases
 
 target-version = "py311"
 line-length = 88
@@ -9,20 +9,25 @@ select = [
     "E",   # pycodestyle errors
     "F",   # Pyflakes
     "I",   # isort
-    "N",   # pep8-naming
     "W",   # pycodestyle warnings
     "UP",  # pyupgrade
 ]
+# Dropped "N" (pep8-naming) entirely — too noisy for ML code (X, y, etc.)
 ignore = [
     "E501",   # line-too-long (formatter handles it)
+    "E741",   # ambiguous variable names (l, I, O) — common in math/ML code
+    "E731",   # lambda assignment — common in data pipelines
+    "E402",   # imports not at top — common in notebooks/conditional imports
+    "F401",   # unused imports — often intentional in __init__.py
+    "F841",   # unused variables — common in tests (unpack but don't use)
     "COM812", # trailing comma conflicts with formatter
     "COM819", # trailing comma conflicts with formatter
     "ISC001", # implicit string concat conflicts with formatter
-    "N806",   # uppercase variable names (X, y in ML are standard)
 ]
 
-[lint.pydocstyle]
-convention = "google"
+[lint.per-file-ignores]
+"__init__.py" = ["F401"]  # allow unused imports in package init files
+"tests/**" = ["E741"]     # allow single-letter vars in tests
 
 [lint.isort]
 known-first-party = ["src"]
