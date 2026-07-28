@@ -48,3 +48,4 @@ class Evaluator:
             output[key] = mean(item[key] for item in metrics if key in item)
 
         return output
+

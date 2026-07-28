@@ -36,3 +36,4 @@ class RegistryError(CircuitBenchError):
 
 class ValidationError(CircuitBenchError):
     """Raised when validation fails."""
+

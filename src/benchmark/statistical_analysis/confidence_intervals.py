@@ -204,3 +204,4 @@ class ConfidenceIntervals:
 __all__ = [
     "ConfidenceIntervals",
 ]
+

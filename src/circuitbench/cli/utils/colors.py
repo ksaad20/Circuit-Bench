@@ -8,3 +8,4 @@ WARNING = "yellow"
 INFO = "cyan"
 HEADER = "blue"
 ACCENT = "magenta"
+

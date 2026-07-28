@@ -109,3 +109,4 @@ class StatisticalReport:
             filename,
             index=True,
         )
+

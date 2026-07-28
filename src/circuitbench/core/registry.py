@@ -16,3 +16,4 @@ class BenchmarkRegistry:
 
     def exists(self, name):
         return name in self._benchmarks
+

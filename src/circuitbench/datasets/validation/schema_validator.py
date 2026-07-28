@@ -32,3 +32,4 @@ class SchemaValidator:
     def validate_target(self, dataframe, target):
 
         return target in dataframe.columns
+

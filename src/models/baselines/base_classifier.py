@@ -36,3 +36,4 @@ class BaselineClassifier(BaselineModel):
             len(X),
             self.label_,
         )
+

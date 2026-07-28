@@ -139,3 +139,4 @@ class RandomForestRegressionModel(SklearnModel):
 __all__ = [
     "RandomForestRegressionModel",
 ]
+

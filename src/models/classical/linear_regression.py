@@ -163,3 +163,4 @@ class LinearRegressionModel(BaseModel):
     def __repr__(self):
 
         return f"LinearRegressionModel(fitted={self.is_fitted})"
+

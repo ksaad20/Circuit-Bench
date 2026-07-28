@@ -25,3 +25,4 @@ def validate_json(path: str | Path) -> bool:
 
 def validate_python(path: str | Path) -> bool:
     return str(path).endswith(".py")
+

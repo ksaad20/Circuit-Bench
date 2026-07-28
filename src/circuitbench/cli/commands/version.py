@@ -27,3 +27,4 @@ def register(cli) -> None:
     Register the version command with the CLI.
     """
     cli.add_typer(app, name="version")
+

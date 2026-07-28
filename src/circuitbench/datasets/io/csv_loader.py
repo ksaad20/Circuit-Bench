@@ -28,3 +28,4 @@ class CSVLoader:
     def preview(self, filename, rows=5):
 
         return self.load(filename).head(rows)
+

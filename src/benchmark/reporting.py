@@ -225,3 +225,4 @@ class BenchmarkReport:
 __all__ = [
     "BenchmarkReport",
 ]
+

@@ -21,3 +21,4 @@ class Scheduler:
 
         with ThreadPoolExecutor(max_workers=self.max_workers) as executor:
             return list(executor.map(function, iterable))
+

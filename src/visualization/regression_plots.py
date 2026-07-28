@@ -248,3 +248,4 @@ class RegressionPlots:
 __all__ = [
     "RegressionPlots",
 ]
+

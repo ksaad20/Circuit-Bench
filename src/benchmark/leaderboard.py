@@ -157,3 +157,4 @@ class Leaderboard:
 __all__ = [
     "Leaderboard",
 ]
+

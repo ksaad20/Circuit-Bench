@@ -132,3 +132,4 @@ class ExtraTreesRegressionModel(SklearnModel):
 __all__ = [
     "ExtraTreesRegressionModel",
 ]
+

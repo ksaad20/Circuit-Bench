@@ -149,3 +149,4 @@ class SHAPWrapper:
             plot_type="bar",
             show=show,
         )
+

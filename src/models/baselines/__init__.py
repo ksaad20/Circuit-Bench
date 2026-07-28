@@ -62,3 +62,4 @@ __all__ = [
     "ModePredictor",
     "RandomPredictor",
 ]
+

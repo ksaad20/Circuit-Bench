@@ -26,3 +26,4 @@ def print_header(title: str) -> None:
     print("=" * len(title))
     print(title)
     print("=" * len(title))
+

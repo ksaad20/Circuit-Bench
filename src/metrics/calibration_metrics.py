@@ -170,3 +170,4 @@ class CalibrationMetrics:
                 y_prob,
             ),
         }
+

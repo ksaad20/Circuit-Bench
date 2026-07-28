@@ -165,3 +165,4 @@ class FigureGenerator:
             )
 
         return fig, ax
+

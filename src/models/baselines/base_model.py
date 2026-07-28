@@ -46,3 +46,4 @@ class BaselineModel(BaseModel, ABC):
 
         except Exception:
             return 0.0
+

@@ -150,3 +150,4 @@ class CriticalDifference:
 __all__ = [
     "CriticalDifference",
 ]
+

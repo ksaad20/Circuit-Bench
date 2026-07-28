@@ -21,3 +21,4 @@ def print_table(headers: list[str], rows: Iterable[Iterable[object]]) -> None:
 
     for row in rows:
         print(" | ".join(row[i].ljust(widths[i]) for i in range(len(headers))))
+

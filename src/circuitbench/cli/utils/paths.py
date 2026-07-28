@@ -23,3 +23,4 @@ def project_root() -> Path:
 
 def resolve(*parts: str) -> Path:
     return PROJECT_ROOT.joinpath(*parts)
+

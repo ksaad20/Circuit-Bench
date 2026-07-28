@@ -41,3 +41,4 @@ class DatasetIntegrity:
             "total_missing": DatasetIntegrity.total_missing(df),
             "memory_bytes": DatasetIntegrity.memory_usage(df),
         }
+

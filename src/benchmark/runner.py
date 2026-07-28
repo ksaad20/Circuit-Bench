@@ -69,3 +69,4 @@ class BenchmarkRunner:
         self.datasets = []
         self.models = []
         self.results = []
+

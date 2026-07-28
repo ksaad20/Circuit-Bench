@@ -133,3 +133,4 @@ class ConstantPredictor(BaselineRegressor):
     def __repr__(self):
 
         return f"ConstantPredictor(value={self.value}, fitted={self.is_fitted})"
+

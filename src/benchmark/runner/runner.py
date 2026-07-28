@@ -64,3 +64,4 @@ class BenchmarkRunner:
 
         self.results.append(result)
         return result
+
